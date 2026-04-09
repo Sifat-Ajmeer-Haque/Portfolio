@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sifat Ajmeer Haque — Industrial Engineer & Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════ */
+:root{
+  --ink:#0a090c;
+  --paper:#f5f0e8;
+  --paper2:#ede8de;
+  --paper3:#e5dfd3;
+  --gold:#b8860b;
+  --gold2:#d4a017;
+  --gold-pale:rgba(184,134,11,.12);
+  --gold-glow:rgba(212,160,23,.22);
+  --teal:#1a5f5a;
+  --teal2:#2a7a74;
+  --teal-pale:rgba(26,95,90,.12);
+  --rust:#8b3a2a;
+  --muted:#7a7167;
+  --muted2:#5c5549;
+  --line:rgba(10,9,12,.1);
+  --line2:rgba(10,9,12,.06);
+  --serif:'Libre Baskerville',Georgia,serif;
+  --display:'Syne',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --bounce:cubic-bezier(.34,1.56,.64,1);
+  --max:1100px;
+}
+
+/* ═══════════════════════════════════════════
+   RESET + BASE
+═══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-weight:400;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+img{display:block;max-width:100%;}
+
+/* Subtle paper grain */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9998;
+  opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--paper);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 3rem;
+  background:rgba(245,240,232,.94);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+  transition:padding .35s var(--ease),background .35s;
+}
+nav.scrolled{padding:.9rem 3rem;background:rgba(245,240,232,.98);}
+.nav-logo{
+  font-family:var(--display);font-size:.85rem;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+  display:flex;align-items:center;gap:.5rem;
+}
+.nav-logo-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);
+  display:inline-block;
+  animation:pulse-dot 2.4s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.7);}}
+.nav-links{
+  display:flex;gap:2rem;
+  font-family:var(--display);font-size:.7rem;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--muted);
+}
+.nav-links a{position:relative;transition:color .25s;}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;
+  background:var(--gold);transition:width .3s var(--ease);
+}
+.nav-links a:hover{color:var(--ink);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{
+  font-family:var(--display);font-size:.68rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  border:1.5px solid var(--ink);color:var(--ink);
+  padding:.42rem 1.1rem;
+  transition:background .25s,color .25s;
+}
+.nav-cta:hover{background:var(--ink);color:var(--paper);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:600;}
+.burger span{width:24px;height:1.5px;background:var(--ink);display:block;transition:transform .3s,opacity .3s;}
+
+/* Mobile menu */
+.mob-overlay{
+  display:none;position:fixed;inset:0;z-index:490;
+  background:var(--paper);
+  flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;
+}
+.mob-overlay.open{display:flex;}
+.mob-overlay a{
+  font-family:var(--display);font-size:2rem;font-weight:700;
+  color:var(--muted);letter-spacing:.04em;
+  transition:color .2s;
+}
+.mob-overlay a:hover{color:var(--gold);}
+.mob-close{
+  position:absolute;top:1.5rem;right:2rem;
+  font-family:var(--display);font-size:1rem;font-weight:700;
+  color:var(--muted);cursor:pointer;letter-spacing:.1em;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT UTILITIES
+═══════════════════════════════════════════ */
+.wrap{max-width:var(--max);margin:0 auto;padding:6rem 3rem;}
+.wrap-sm{max-width:820px;margin:0 auto;padding:6rem 3rem;}
+
+/* Scroll-reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal-left.in{opacity:1;transform:none;}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal-right.in{opacity:1;transform:none;}
+.delay-1{transition-delay:.1s;}
+.delay-2{transition-delay:.2s;}
+.delay-3{transition-delay:.3s;}
+.delay-4{transition-delay:.4s;}
+.delay-5{transition-delay:.5s;}
+
+/* Section label */
+.s-label{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.9rem;
+  margin-bottom:2rem;
+}
+.s-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+
+/* Section heading */
+.s-h1{
+  font-family:var(--display);font-size:clamp(2.4rem,5vw,4rem);
+  font-weight:700;line-height:1.2;letter-spacing:0.01em;
+  margin-bottom:.5rem;
+}
+.s-h1 i{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold);}
+.s-sub{
+  font-family:var(--display);font-size:.85rem;font-weight:400;
+  color:var(--muted);line-height:1.7;max-width:520px;
+  margin-bottom:3rem;
+}
+
+/* Divider line */
+.rule{height:1px;background:var(--line);margin:1px 0;}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1.15fr 1fr;
+  align-items:center;gap:5rem;
+  max-width:var(--max);margin:0 auto;
+  padding:8rem 3rem 5rem;
+  position:relative;
+}
+
+/* Decorative grid lines */
+#hero::before{
+  content:'';
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(var(--line2) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line2) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+
+.hero-text{position:relative;z-index:2;}
+
+.hero-eyebrow{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--teal);
+  display:flex;align-items:center;gap:.8rem;
+  margin-bottom:1.8rem;
+  opacity:0;animation:fade-up .8s .2s forwards;
+}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--teal);}
+
+.hero-name{
+  font-family:var(--display);
+  font-size:clamp(3rem,6vw,5.5rem);
+  font-weight:700;
+  line-height:1.15;
+  letter-spacing:0.01em;
+  margin-bottom:1rem;
+  opacity:0;animation:fade-up .8s .35s forwards;
+}
+.hero-name .ln{color:var(--gold);}
+
+.hero-rule{
+  width:60px;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--teal));
+  margin:1.5rem 0;
+  opacity:0;animation:fade-up .8s .48s forwards;
+}
+
+.hero-roles{
+  display:flex;flex-wrap:wrap;gap:.5rem;
+  margin-bottom:1.8rem;
+  opacity:0;animation:fade-up .8s .55s forwards;
+}
+.role-chip{
+  font-family:var(--display);font-size:.65rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:.3rem .8rem;
+  border:1.5px solid var(--line);
+  color:var(--muted2);
+  transition:border-color .25s,color .25s,background .25s;
+}
+.role-chip:hover,.role-chip.ac{border-color:var(--gold);color:var(--gold);background:var(--gold-pale);}
+
+.hero-desc{
+  font-size:.92rem;color:var(--muted);
+  line-height:1.85;
+  border-left:2px solid var(--teal);
+  padding-left:1.2rem;
+  max-width:430px;
+  margin-bottom:2.5rem;
+  opacity:0;animation:fade-up .8s .65s forwards;
+}
+
+.hero-btns{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:fade-up .8s .75s forwards;
+}
+.btn-primary{
+  font-family:var(--display);font-size:.72rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);
+  padding:.72rem 1.7rem;
+  transition:background .25s,transform .2s;
+}
+.btn-primary:hover{background:var(--gold);transform:translateY(-2px);}
+.btn-outline{
+  font-family:var(--display);font-size:.72rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;
+  border:1.5px solid var(--ink);color:var(--ink);
+  padding:.72rem 1.7rem;
+  transition:background .25s,color .25s,transform .2s;
+}
+.btn-outline:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
+
+/* Hero right panel */
+.hero-right{
+  position:relative;z-index:2;
+  opacity:0;animation:fade-up .8s .45s forwards;
+}
+
+.hero-card{
+  background:var(--paper2);
+  border:1px solid var(--line);
+  padding:2.5rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--teal));
+}
+
+.hero-photo-bg{
+  position:absolute;bottom:0;right:0;
+  width:160px;height:200px;
+  overflow:hidden;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+}
+.hero-photo-bg img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:top center;
+  filter:grayscale(100%) sepia(20%) contrast(0.9) brightness(1.05);
+  opacity:0.13;
+  mix-blend-mode:multiply;
+  display:block;
+}
+/* Fallback initials (shown when no real photo) */
+.hero-initials{
+  font-family:var(--display);font-size:6rem;font-weight:700;
+  color:var(--line);line-height:1;
+  position:absolute;bottom:-1.5rem;right:1rem;
+  user-select:none;pointer-events:none;
+  letter-spacing:normal;
+  opacity:0.5;
+}
+
+.hero-kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:1.5rem;}
+.kpi{background:var(--paper);padding:1.2rem 1rem;}
+.kpi-n{
+  font-family:var(--display);font-size:2.6rem;font-weight:700;
+  color:var(--ink);line-height:1.15;letter-spacing:normal;
+}
+.kpi-n span{color:var(--gold);}
+.kpi-l{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;}
+
+.hero-badges{display:flex;flex-direction:column;gap:.55rem;}
+.hb{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.7rem 1rem;
+  background:var(--paper);
+  border:1px solid var(--line);
+  transition:border-color .25s,background .25s;
+}
+.hb:hover{border-color:var(--gold);background:var(--gold-pale);}
+.hb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.hb-dot.gold{background:var(--gold);}
+.hb-dot.teal{background:var(--teal);}
+.hb-dot.rust{background:var(--rust);}
+.hb-txt{font-family:var(--display);font-size:.72rem;font-weight:600;color:var(--muted2);line-height:1.4;}
+
+@keyframes fade-up{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:none;}
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════ */
+#about{background:var(--ink);color:var(--paper);}
+#about .s-label{color:var(--gold2);}
+#about .s-label::before{background:var(--gold2);}
+#about .s-h1{color:var(--paper);}
+#about .s-h1 i{color:var(--gold2);}
+#about .s-sub{color:rgba(245,240,232,.55);}
+
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:start;}
+
+.about-body{
+  font-size:.92rem;color:rgba(245,240,232,.72);line-height:1.9;
+}
+.about-body p{margin-bottom:1.1rem;}
+.about-body strong{color:var(--paper);font-weight:700;}
+.about-body em{color:var(--gold2);font-style:italic;}
+
+.pillar-stack{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06);}
+.pillar{
+  background:rgba(245,240,232,.03);
+  padding:1.4rem 1.6rem;
+  border-left:2px solid transparent;
+  transition:border-color .3s,background .3s;
+}
+.pillar:hover{border-color:var(--gold2);background:rgba(212,160,23,.05);}
+.pillar-head{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem;}
+.pillar-icon{font-size:1rem;}
+.pillar-t{font-family:var(--display);font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);}
+.pillar-d{font-size:.8rem;color:rgba(245,240,232,.5);line-height:1.65;}
+
+/* ═══════════════════════════════════════════
+   ACADEMIC TIMELINE
+═══════════════════════════════════════════ */
+#academic{background:var(--paper2);}
+
+.ac-timeline{position:relative;padding-left:0;}
+.ac-year-strip{
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:3rem;
+  margin-bottom:1px;
+}
+
+.timeline-track{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.timeline-track::before{
+  content:'';position:absolute;left:49px;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,var(--gold),var(--teal),rgba(26,95,90,.1));
+}
+
+.t-row{
+  display:grid;grid-template-columns:100px 1fr;
+  gap:2.5rem;
+  position:relative;
+  padding-bottom:2.5rem;
+}
+.t-row:last-child{padding-bottom:0;}
+
+.t-yr-col{text-align:right;padding-top:.8rem;}
+.t-yr{
+  font-family:var(--mono);font-size:.67rem;letter-spacing:.12em;
+  color:var(--muted);
+}
+.t-node{
+  position:absolute;
+  left:calc(100px + 2.5rem/2 - 6px);
+  top:.75rem;
+  width:12px;height:12px;
+  border-radius:50%;
+  background:var(--paper2);
+  border:2px solid var(--gold);
+  z-index:1;
+  transition:transform .25s var(--bounce),border-color .25s;
+}
+.t-row:hover .t-node{transform:scale(1.4);border-color:var(--teal);}
+.t-node.big{border-color:var(--gold);background:var(--gold);}
+
+.t-content{
+  background:var(--paper);
+  border:1px solid var(--line);
+  padding:1.5rem 1.8rem;
+  position:relative;
+  transition:box-shadow .3s,border-color .3s,transform .3s;
+}
+.t-content:hover{
+  box-shadow:4px 4px 0 var(--gold-pale);
+  border-color:rgba(184,134,11,.35);
+  transform:translateX(3px);
+}
+.t-content::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--gold);
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .35s var(--ease);
+}
+.t-row:hover .t-content::before{transform:scaleY(1);}
+
+.t-badge{
+  display:inline-block;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;
+  padding:.2rem .6rem;margin-bottom:.6rem;
+}
+.tb-reviewer{background:var(--teal-pale);color:var(--teal2);border:1px solid rgba(26,95,90,.3);}
+.tb-presenter{background:var(--gold-pale);color:var(--gold);border:1px solid rgba(184,134,11,.3);}
+.tb-award{background:rgba(139,58,42,.1);color:var(--rust);border:1px solid rgba(139,58,42,.3);}
+.tb-conf{background:rgba(10,9,12,.06);color:var(--muted2);border:1px solid var(--line);}
+
+.t-title{font-family:var(--display);font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.3rem;line-height:1.4;}
+.t-venue{font-family:var(--mono);font-size:.7rem;color:var(--teal);margin-bottom:.4rem;letter-spacing:.04em;}
+.t-desc{font-size:.82rem;color:var(--muted);line-height:1.65;}
+
+/* ═══════════════════════════════════════════
+   PUBLICATIONS
+═══════════════════════════════════════════ */
+#publications{background:var(--paper);}
+
+.pub-tabs{
+  display:flex;gap:0;border-bottom:1px solid var(--line);
+  margin-bottom:2.5rem;
+}
+.pub-tab{
+  font-family:var(--display);font-size:.7rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:.7rem 1.5rem;color:var(--muted);
+  cursor:pointer;border-bottom:2px solid transparent;
+  transition:color .25s,border-color .25s;
+}
+.pub-tab.active,.pub-tab:hover{color:var(--ink);border-color:var(--gold);}
+
+.pub-section{display:none;}
+.pub-section.active{display:block;}
+
+.pub-card{
+  display:grid;grid-template-columns:72px 1fr auto;
+  gap:1.5rem;align-items:start;
+  padding:1.8rem 1.5rem;
+  border-bottom:1px solid var(--line2);
+  border-left:3px solid transparent;
+  transition:background .25s, border-left-color .25s;
+}
+.pub-card:last-child{border-bottom:none;}
+.pub-card:hover{background:var(--gold-pale);border-left-color:var(--gold);}
+
+.pub-num{
+  font-family:var(--display);font-size:3.5rem;font-weight:800;
+  color:var(--line);line-height:1;
+  user-select:none;padding-top:.1rem;
+}
+.pub-year{font-family:var(--mono);font-size:.65rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.5rem;}
+.pub-title{font-family:var(--display);font-size:.92rem;font-weight:700;color:var(--ink);line-height:1.45;margin-bottom:.4rem;}
+.pub-authors{font-size:.8rem;color:var(--muted);margin-bottom:.2rem;}
+.pub-authors span{color:var(--gold);font-weight:700;}
+.pub-venue{font-size:.78rem;color:var(--teal);font-style:italic;margin-bottom:.35rem;}
+.pub-doi{font-family:var(--mono);font-size:.65rem;color:var(--teal);}
+.pub-doi a{color:var(--teal);transition:opacity .2s;}
+.pub-doi a:hover{opacity:.65;}
+.pub-cite{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-family:var(--mono);font-size:.63rem;
+  background:var(--teal-pale);color:var(--teal2);
+  border:1px solid rgba(26,95,90,.25);
+  padding:.2rem .55rem;margin-top:.45rem;
+}
+
+/* Publication action buttons — DOI / PDF / Cite */
+.pub-links{
+  display:flex;flex-wrap:wrap;gap:.4rem;
+  margin-top:.65rem;
+  align-items:center;
+}
+.pub-btn{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:.3rem;
+  padding:.28rem .75rem;
+  border:1.5px solid var(--line);
+  color:var(--muted2);
+  transition:border-color .22s,color .22s,background .22s;
+  cursor:pointer;white-space:nowrap;
+}
+.pub-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-pale);}
+.pub-btn.doi{border-color:rgba(26,95,90,.35);color:var(--teal2);}
+.pub-btn.doi:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-pale);}
+.pub-btn.pdf{border-color:rgba(139,58,42,.3);color:var(--rust);}
+.pub-btn.pdf:hover{border-color:var(--rust);color:var(--rust);background:rgba(139,58,42,.07);}
+.pub-btn.cite-btn{border-color:rgba(184,134,11,.3);color:var(--gold);}
+.pub-btn.cite-btn:hover{border-color:var(--gold);background:var(--gold-pale);}
+.pub-cite-block{
+  display:none;
+  font-family:var(--mono);font-size:.63rem;
+  background:var(--paper2);border:1px solid var(--line);
+  padding:.9rem 1.1rem;margin-top:.6rem;
+  color:var(--muted2);line-height:1.7;
+  white-space:pre-wrap;word-break:break-all;
+  border-left:3px solid var(--gold);
+}
+.pub-cite-block.open{display:block;}
+.pub-badge{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;padding:.22rem .65rem;
+  align-self:start;white-space:nowrap;
+}
+.pb-j{background:var(--gold-pale);color:var(--gold);border:1px solid rgba(184,134,11,.3);}
+.pb-c{background:var(--teal-pale);color:var(--teal2);border:1px solid rgba(26,95,90,.3);}
+.pb-a{background:rgba(139,58,42,.08);color:var(--rust);border:1px solid rgba(139,58,42,.3);}
+.pb-r{background:rgba(10,9,12,.05);color:var(--muted2);border:1px solid var(--line);}
+
+/* Reports & Thought Leadership */
+.report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
+.report-card{
+  background:var(--paper);padding:2rem 1.7rem;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+.report-card:hover{background:var(--paper2);}
+.report-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--teal));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease);
+}
+.report-card:hover::after{transform:scaleX(1);}
+.report-n{
+  font-family:var(--display);font-size:4.5rem;font-weight:800;
+  color:var(--line);line-height:1;margin-bottom:1rem;
+}
+.report-type{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;}
+.report-title{font-family:var(--display);font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.5rem;line-height:1.4;}
+.report-desc{font-size:.78rem;color:var(--muted);line-height:1.65;}
+
+/* ═══════════════════════════════════════════
+   EXPERIENCE
+═══════════════════════════════════════════ */
+#experience{background:var(--ink);color:var(--paper);}
+#experience .s-label{color:var(--gold2);}
+#experience .s-label::before{background:var(--gold2);}
+#experience .s-h1{color:var(--paper);}
+#experience .s-h1 i{color:var(--gold2);}
+#experience .s-sub{color:rgba(245,240,232,.5);}
+
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07);}
+.exp-card{
+  background:rgba(245,240,232,.02);
+  padding:2.5rem 2.2rem;
+  border-top:2px solid transparent;
+  transition:background .3s,border-color .3s;
+}
+.exp-card:hover{background:rgba(212,160,23,.05);border-color:var(--gold2);}
+.exp-period{font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:.6rem;}
+.exp-role{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--paper);line-height:1.25;margin-bottom:.3rem;}
+.exp-org{font-family:var(--display);font-size:.8rem;font-weight:600;color:var(--teal2);margin-bottom:.2rem;}
+.exp-loc{font-family:var(--mono);font-size:.68rem;color:rgba(245,240,232,.4);margin-bottom:1.2rem;}
+.exp-body{font-size:.83rem;color:rgba(245,240,232,.65);line-height:1.75;}
+.exp-body li{padding-left:1.1rem;position:relative;margin-bottom:.55rem;}
+.exp-body li::before{content:'—';position:absolute;left:0;color:var(--gold2);font-size:.75rem;}
+.exp-body strong{color:var(--paper);font-weight:700;}
+.exp-kpis{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.2rem;}
+.kpi-chip{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;
+  background:rgba(212,160,23,.12);color:var(--gold2);
+  border:1px solid rgba(212,160,23,.25);
+  padding:.2rem .6rem;
+}
+
+/* ═══════════════════════════════════════════
+   RESEARCH INTERESTS
+═══════════════════════════════════════════ */
+#research{background:var(--paper2);}
+
+.r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
+.r-card{
+  background:var(--paper);
+  padding:2rem 1.8rem;
+  position:relative;overflow:hidden;
+  cursor:default;
+  transition:background .3s,transform .3s;
+}
+.r-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,var(--gold-pale),transparent 60%);
+  opacity:0;
+  transition:opacity .4s;
+}
+.r-card:hover::before{opacity:1;}
+.r-card:hover{background:var(--paper2);}
+.r-num{
+  font-family:var(--display);font-size:5rem;font-weight:800;
+  color:var(--line);line-height:1;margin-bottom:.8rem;
+  transition:color .3s;
+}
+.r-card:hover .r-num{color:rgba(184,134,11,.2);}
+.r-title{font-family:var(--display);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.45rem;line-height:1.4;position:relative;}
+.r-desc{font-size:.8rem;color:var(--muted);line-height:1.65;position:relative;}
+.r-chip{
+  display:inline-block;margin-top:.9rem;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.2rem .6rem;
+  border:1px solid rgba(184,134,11,.35);color:var(--gold);
+  position:relative;
+}
+
+/* ═══════════════════════════════════════════
+   SKILLS
+═══════════════════════════════════════════ */
+#skills{background:var(--paper);}
+
+.skills-outer{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start;}
+
+.sk-group{margin-bottom:2.5rem;}
+.sk-group:last-child{margin-bottom:0;}
+.sk-label{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:.9rem;
+}
+.sk-tags{display:flex;flex-wrap:wrap;gap:.45rem;}
+.sk-tag{
+  font-family:var(--display);font-size:.75rem;font-weight:600;
+  color:var(--muted2);border:1px solid var(--line);
+  padding:.3rem .8rem;
+  transition:border-color .25s,color .25s,background .25s;
+}
+.sk-tag:hover,.sk-tag.hl{border-color:var(--gold);color:var(--gold);background:var(--gold-pale);}
+
+/* IELTS block */
+.ielts-wrap{
+  background:var(--paper2);
+  border:1px solid var(--line);
+  padding:2rem;
+}
+.ielts-header{margin-bottom:1.3rem;}
+.ielts-name{font-family:var(--display);font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);}
+.ielts-sub{font-family:var(--mono);font-size:.62rem;color:var(--muted);letter-spacing:.08em;margin-top:.2rem;}
+
+.ielts-visual{
+  display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center;
+  margin-bottom:1.5rem;
+}
+.ielts-overall{
+  width:90px;height:90px;
+  border-radius:50%;
+  background:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.ielts-overall .num{font-family:var(--display);font-size:2.2rem;font-weight:800;color:var(--gold2);line-height:1;}
+.ielts-overall .lbl{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.5);margin-top:.15rem;}
+
+.ielts-bars{display:flex;flex-direction:column;gap:.65rem;}
+.ib-row{display:grid;grid-template-columns:70px 1fr 28px;align-items:center;gap:.7rem;}
+.ib-name{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--muted);}
+.ib-bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;}
+.ib-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--teal));border-radius:2px;transform-origin:left;transform:scaleX(0);transition:transform 1.2s var(--ease);}
+.ib-fill.animated{transform:scaleX(1);}
+.ib-score{font-family:var(--display);font-size:.75rem;font-weight:800;color:var(--ink);}
+
+/* ═══════════════════════════════════════════
+   CERTIFICATIONS
+═══════════════════════════════════════════ */
+#certifications{background:var(--ink);color:var(--paper);}
+#certifications .s-label{color:var(--gold2);}
+#certifications .s-label::before{background:var(--gold2);}
+#certifications .s-h1{color:var(--paper);}
+#certifications .s-h1 i{color:var(--gold2);}
+#certifications .s-sub{color:rgba(245,240,232,.5);}
+
+.cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.07);}
+.cert-card{
+  background:rgba(245,240,232,.02);
+  padding:1.8rem 2rem;
+  display:flex;gap:1.2rem;align-items:flex-start;
+  border-left:2px solid transparent;
+  transition:background .3s,border-color .3s;
+}
+.cert-card:hover{background:rgba(212,160,23,.04);border-color:var(--gold2);}
+.cert-card.featured-c{border-color:rgba(212,160,23,.5);}
+.cert-icon{font-size:1.6rem;flex-shrink:0;}
+.cert-name{font-family:var(--display);font-size:.88rem;font-weight:700;color:var(--paper);margin-bottom:.28rem;line-height:1.35;}
+.cert-issuer{font-family:var(--mono);font-size:.68rem;color:var(--gold2);margin-bottom:.3rem;letter-spacing:.04em;}
+.cert-desc{font-size:.78rem;color:rgba(245,240,232,.48);line-height:1.6;}
+
+/* ═══════════════════════════════════════════
+   ACHIEVEMENTS
+═══════════════════════════════════════════ */
+#achievements{background:var(--paper2);}
+
+.ach-list{display:grid;gap:1px;background:var(--line);}
+.ach-row{
+  background:var(--paper);
+  display:grid;grid-template-columns:60px 1fr auto;
+  gap:2rem;align-items:center;
+  padding:1.5rem 2rem;
+  transition:background .25s,transform .25s;
+}
+.ach-row:hover{background:var(--gold-pale);transform:translateX(4px);}
+.ach-icon{font-size:1.5rem;text-align:center;}
+.ach-title{font-family:var(--display);font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.ach-desc{font-size:.8rem;color:var(--muted);line-height:1.55;}
+.ach-year{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.1em;white-space:nowrap;}
+
+/* ═══════════════════════════════════════════
+   EDUCATION
+═══════════════════════════════════════════ */
+#education{background:var(--paper);}
+
+.edu-stack{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);}
+.edu-card{
+  background:var(--paper);
+  display:grid;grid-template-columns:80px 1fr;
+  gap:2rem;padding:2rem 2.2rem;
+  transition:background .3s;
+  position:relative;
+}
+.edu-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--gold);
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .4s var(--ease);
+}
+.edu-card:hover::before{transform:scaleY(1);}
+.edu-card:hover{background:var(--paper2);}
+.edu-yr{
+  font-family:var(--display);font-size:2rem;font-weight:800;
+  color:var(--line);line-height:1;text-align:right;
+  align-self:start;padding-top:.4rem;
+}
+.edu-degree{font-family:var(--display);font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.edu-inst{font-family:var(--mono);font-size:.72rem;color:var(--teal);margin-bottom:.18rem;letter-spacing:.04em;}
+.edu-meta{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-bottom:.7rem;}
+.edu-desc{font-size:.83rem;color:var(--muted);line-height:1.7;}
+.edu-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem;}
+.edu-tag{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;
+  border:1px solid var(--line);padding:.15rem .55rem;color:var(--muted);
+}
+
+/* ═══════════════════════════════════════════
+   EXTRAS
+═══════════════════════════════════════════ */
+#extra{background:var(--paper2);}
+.extra-cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.extra-group-t{font-family:var(--display);font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--line);}
+.extra-item{
+  display:flex;align-items:flex-start;gap:.8rem;
+  padding:.6rem .5rem;border-bottom:1px solid var(--line2);
+  border-left:2px solid transparent;
+  transition:background .2s, border-left-color .2s;
+}
+.extra-item:last-child{border-bottom:none;}
+.extra-item:hover{background:var(--gold-pale);border-left-color:var(--gold);}
+.extra-bullet{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.7rem;}
+.extra-text{font-size:.82rem;color:var(--muted2);line-height:1.55;flex:1;}
+.extra-yr{font-family:var(--mono);font-size:.62rem;color:var(--muted);white-space:nowrap;padding-left:.8rem;padding-top:.1rem;}
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+#contact{background:var(--ink);color:var(--paper);}
+.contact-inner{max-width:680px;margin:0 auto;text-align:center;}
+
+.contact-headline{
+  font-family:var(--display);font-size:clamp(2.5rem,6vw,4.5rem);
+  font-weight:700;line-height:1.2;letter-spacing:0.01em;
+  margin-bottom:1.5rem;color:var(--paper);
+}
+.contact-headline em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold2);}
+
+.contact-sub{font-size:.9rem;color:rgba(245,240,232,.5);line-height:1.8;margin-bottom:2.5rem;}
+
+.contact-email-wrap{margin-bottom:2rem;}
+.contact-email{
+  display:inline-block;
+  font-family:var(--display);font-size:1.1rem;font-weight:700;
+  color:var(--gold2);letter-spacing:.02em;
+  border-bottom:2px solid rgba(212,160,23,.4);
+  padding-bottom:3px;
+  transition:border-color .25s;
+}
+.contact-email:hover{border-color:var(--gold2);}
+
+.social-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;}
+.soc-btn{
+  font-family:var(--display);font-size:.68rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(245,240,232,.5);
+  border:1px solid rgba(255,255,255,.12);
+  padding:.48rem 1.1rem;
+  transition:border-color .25s,color .25s,background .25s;
+}
+.soc-btn:hover{border-color:var(--gold2);color:var(--gold2);background:var(--gold-glow);}
+
+.contact-loc{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:rgba(245,240,232,.35);}
+.contact-loc span{color:rgba(245,240,232,.65);}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{
+  background:var(--ink);
+  border-top:1px solid rgba(255,255,255,.07);
+  padding:1.8rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.f-left{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:rgba(245,240,232,.3);}
+.f-right{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:rgba(245,240,232,.3);cursor:pointer;transition:color .25s;}
+.f-right:hover{color:var(--gold2);}
+
+/* ═══════════════════════════════════════════
+   PROGRESS BAR (reading indicator)
+═══════════════════════════════════════════ */
+#progress-bar{
+  position:fixed;top:0;left:0;height:2px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--teal));
+  z-index:9999;transition:width .1s linear;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:960px){
+  #hero{grid-template-columns:1fr;text-align:center;padding:7rem 2rem 4rem;}
+  .hero-eyebrow,.hero-btns,.hero-roles{justify-content:center;}
+  .hero-desc{margin:0 auto 2rem;}
+  .hero-rule{margin:1.5rem auto;}
+  .hero-right{max-width:440px;margin:0 auto;}
+  .about-grid{grid-template-columns:1fr;gap:3rem;}
+  .r-grid{grid-template-columns:1fr 1fr;}
+  .exp-grid{grid-template-columns:1fr;}
+  .cert-grid{grid-template-columns:1fr;}
+  .skills-outer{grid-template-columns:1fr;}
+  .report-grid{grid-template-columns:1fr;}
+  .extra-cols{grid-template-columns:1fr;}
+  .ach-row{grid-template-columns:48px 1fr;gap:1rem;}
+  .ach-year{display:none;}
+  nav{padding:1rem 1.5rem;}
+  .nav-links,.nav-cta{display:none;}
+  .burger{display:flex;}
+  .wrap,.wrap-sm{padding:4.5rem 1.8rem;}
+}
+@media(max-width:600px){
+  .r-grid{grid-template-columns:1fr;}
+  .kpi-grid,.hero-kpi-grid{grid-template-columns:1fr 1fr;}
+  .ach-grid{grid-template-columns:1fr;}
+  .pub-card{grid-template-columns:1fr;gap:.5rem;}
+  .pub-num{font-size:2rem;}
+  .t-row{grid-template-columns:70px 1fr;gap:1.5rem;}
+  footer{flex-direction:column;gap:.7rem;text-align:center;}
+  .edu-card{grid-template-columns:1fr;}
+  .edu-yr{font-size:1rem;text-align:left;}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="progress-bar"></div>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<header role="banner">
+<nav id="nav">
+  <div class="nav-logo">
+    <span class="nav-logo-dot"></span>
+    Sifat Ajmeer Haque
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#academic">Academic</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Connect</a>
+  <div class="burger" id="burgerBtn">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mob-overlay" id="mobOverlay">
+  <div class="mob-close" id="mobClose">Close ✕</div>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#academic" onclick="closeMob()">Academic</a>
+  <a href="#publications" onclick="closeMob()">Research</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#education" onclick="closeMob()">Education</a>
+  <a href="#skills" onclick="closeMob()">Skills</a>
+  <a href="#certifications" onclick="closeMob()">Certifications</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+</div>
+</header>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section id="hero" aria-label="Introduction">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Industrial &amp; Production Engineer — Bangladesh</div>
+    <h1 class="hero-name">Sifat Ajmeer<br><span class="ln">Haque</span></h1>
+    <div class="hero-rule"></div>
+    <div class="hero-roles">
+      <span class="role-chip ac">Researcher</span>
+      <span class="role-chip">Conference Presenter</span>
+      <span class="role-chip">Technical Reviewer</span>
+      <span class="role-chip">PhD Aspirant</span>
+    </div>
+    <p class="hero-desc">
+      Bridging smart manufacturing, AI-driven energy management, and real industrial practice — through published research, lean process innovation, and international academic engagement.
+    </p>
+    <div class="hero-btns">
+      <a href="#publications" class="btn-primary">View Research</a>
+      <a href="#contact" class="btn-outline">Connect</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card">
+      <!-- Watermark photo background — replace src with your headshot URL -->
+      <div class="hero-photo-bg" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=320&q=80&fit=crop&crop=face" alt="" loading="lazy"/>
+      </div>
+      <div class="hero-kpi-grid">
+        <div class="kpi"><div class="kpi-n">5<span>+</span></div><div class="kpi-l">Publications</div></div>
+        <div class="kpi"><div class="kpi-n">20<span>+</span></div><div class="kpi-l">Citations</div></div>
+        <div class="kpi"><div class="kpi-n">3</div><div class="kpi-l">Conf. Roles</div></div>
+        <div class="kpi"><div class="kpi-n">60<span>%</span></div><div class="kpi-l">Changeover ↓</div></div>
+      </div>
+      <div class="hero-badges">
+        <div class="hb"><div class="hb-dot gold"></div><div class="hb-txt">Production Planner — Akij Plastics Limited (Pipes & Fittings Unit)</div></div>
+        <div class="hb"><div class="hb-dot teal"></div><div class="hb-txt">Reviewer for Technical Papers — IEOM Society International, USA</div></div>
+        <div class="hb"><div class="hb-dot rust"></div><div class="hb-txt">Former Research Assistant— Jashore University of Science and Technology</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+<section id="about">
+<div class="wrap">
+  <div class="s-label reveal">01 — About</div>
+  <div class="about-grid">
+    <div>
+      <h2 class="s-h1 reveal">Turning<br>Complex Systems<br>into <i>Actionable Impact</i></h2>
+      <div class="about-body reveal delay-1">
+        <p>I am an <strong>Industrial and Production Engineer</strong> currently working at Akij Plastics Limited as Assistant Officer overseeing Solvent Cement, Filter Pipes, and Fabricated Fittings Production & Planning. My roots are in Rajshahi, where an early curiosity about how systems work set the direction for everything that followed.</p>
+        <p>At <strong>Jashore University of Science and Technology (JUST)</strong>, I developed deep expertise in manufacturing systems, operations management, and Industry 4.0 technologies. My undergraduate thesis was published in <em>The TQM Journal</em> (Emerald Publishing), and I have since presented research at three international conferences — including in Bangkok, Thailand and Dhaka, Bangladesh.</p>
+        <p>With <strong>25+ citations</strong> across Emerald journals, a Six Sigma Yellow Belt, BITAC and BKMEA certifications, a verified 60% die changeover reduction saving <strong>USD 4,320 annually</strong>, and multiple international conference roles, I am now pursuing <strong>doctoral research</strong> at the intersection of AI-driven energy management and smart manufacturing.</p>
+      </div>
+    </div>
+    <div class="pillar-stack reveal delay-2">
+      <div class="pillar"><div class="pillar-head"><span class="pillar-icon">⚙️</span><div class="pillar-t">Smart Manufacturing</div></div><div class="pillar-d">Industry 4.0 adoption in resource-constrained settings; lean tools, process intelligence, and digital transformation pathways.</div></div>
+      <div class="pillar"><div class="pillar-head"><span class="pillar-icon">⚡</span><div class="pillar-t">Energy Efficiency</div></div><div class="pillar-d">AI-driven industrial energy management and intelligent optimisation strategies for manufacturing plants.</div></div>
+      <div class="pillar"><div class="pillar-head"><span class="pillar-icon">🌿</span><div class="pillar-t">Green Supply Chain</div></div><div class="pillar-d">Circular economy, green logistics, and sustainable practices balancing efficiency with environmental responsibility.</div></div>
+      <div class="pillar"><div class="pillar-head"><span class="pillar-icon">📊</span><div class="pillar-t">Data-Driven Operations</div></div><div class="pillar-d">Transforming complex industrial data into decisions that drive measurable performance improvement.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ ACADEMIC PROFILE ═══════════════════════ -->
+<section id="academic">
+<div class="wrap">
+  <div class="s-label reveal">02 — Academic Profile</div>
+  <h2 class="s-h1 reveal">International <i>Engagements</i></h2>
+  <p class="s-sub reveal delay-1">Presenter, reviewer, and award recipient across leading international conferences in industrial engineering.</p>
+
+  <div class="timeline-track">
+
+    <div class="t-row reveal">
+      <div class="t-yr-col"><div class="t-yr">Mar 2026</div></div>
+      <div class="t-node big"></div>
+      <div class="t-content">
+        <span class="t-badge tb-reviewer">Technical Reviewer</span>
+        <div class="t-title">7th Asia Pacific IEOM Conference — Bangkok, Thailand</div>
+        <div class="t-venue">IEOM Society International · March 25–27, 2026</div>
+        <div class="t-desc">Reviewed three technical papers and provided expert feedback for peer-reviewed proceedings in industrial engineering and operations management. Certified by Prof. Charles Mbohwa (UNISA) and Prof. Donald M. Reimer (IEOM COO).</div>
+      </div>
+    </div>
+
+    <div class="t-row reveal delay-1">
+      <div class="t-yr-col"><div class="t-yr">Dec 2025</div></div>
+      <div class="t-node"></div>
+      <div class="t-content">
+        <span class="t-badge tb-reviewer">Reviewer</span>
+        <span class="t-badge tb-award" style="margin-left:.4rem;">🏆 2nd Place</span>
+        <div class="t-title">8th IEOM Bangladesh Conference — Dhaka</div>
+        <div class="t-venue">IEOM Society International · Dec 20–21, 2025</div>
+        <div class="t-desc">Served as Technical Paper Reviewer for IE & Operations Management proceedings. Also awarded <strong>2nd Place in the Supply Chain & Logistics Competition (Onsite)</strong> — paper: "Improving Supply Chain Effectiveness: An Analysis of Bangladesh's Pharmaceutical Industry." Associated with JUST.</div>
+      </div>
+    </div>
+
+    <div class="t-row reveal delay-2">
+      <div class="t-yr-col"><div class="t-yr">Dec 2024</div></div>
+      <div class="t-node"></div>
+      <div class="t-content">
+        <span class="t-badge tb-presenter">Presenter</span>
+        <div class="t-title">7th Bangladeshi IEOM International Conference — AIUB, Dhaka</div>
+        <div class="t-venue">IEOM Society International · Dec 21–23, 2024 · Paper ID: 193</div>
+        <div class="t-desc">Oral presentation: <em>"Industry 4.0-Enabled SMED Implementation for Improving Pipe Extrusion Efficiency: A Case Study."</em> Associated with Akij Pipes & Fittings. Research based on real lean implementation achieving 60% changeover reduction.</div>
+      </div>
+    </div>
+
+    <div class="t-row reveal delay-3">
+      <div class="t-yr-col"><div class="t-yr">Nov 2023</div></div>
+      <div class="t-node"></div>
+      <div class="t-content">
+        <span class="t-badge tb-presenter">Presenter</span>
+        <span class="t-badge tb-conf" style="margin-left:.4rem;">ICMERE-2023</span>
+        <div class="t-title">7th International Conference on Mechanical Engineering & Renewable Energy — CUET, Chittagong</div>
+        <div class="t-venue">Chittagong University of Engineering & Technology · Nov 16–18, 2023</div>
+        <div class="t-desc">Oral presentation: <em>"A Hierarchical Framework for Assessing Drivers and Barriers to Implementing Green Supply Chain Management in the Construction Sector of Bangladesh."</em> Associated with JUST. Published with 1 citation.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ PUBLICATIONS ═══════════════════════ -->
+<section id="publications">
+<div class="wrap">
+  <div class="s-label reveal">03 — Publications</div>
+  <h2 class="s-h1 reveal">Research <i>Output</i></h2>
+  <p class="s-sub reveal delay-1">
+    Peer-reviewed journals, conference proceedings, and industry thought leadership.
+    &nbsp;<a href="https://scholar.google.com" target="_blank" style="font-family:var(--mono);font-size:.68rem;color:var(--teal);border-bottom:1px solid rgba(26,95,90,.3);">Google Scholar ↗</a>
+    &nbsp;<a href="https://orcid.org" target="_blank" style="font-family:var(--mono);font-size:.68rem;color:var(--teal);border-bottom:1px solid rgba(26,95,90,.3);">ORCID ↗</a>
+  </p>
+
+  <div class="pub-tabs reveal">
+    <div class="pub-tab active" data-tab="journals">Journal Articles</div>
+    <div class="pub-tab" data-tab="conferences">Conference Papers</div>
+    <div class="pub-tab" data-tab="reports">Reports & Thought Leadership</div>
+  </div>
+
+  <!-- JOURNALS -->
+  <div class="pub-section active reveal" id="tab-journals">
+    <article class="pub-card">
+      <div class="pub-num" aria-hidden="true">01</div>
+      <div>
+        <div class="pub-year">2024</div>
+        <h3 class="pub-title">Barriers to TQM Implementation in SMEs in Bangladesh: An Interpretive Structural Modeling Approach</h3>
+        <div class="pub-authors">Mustafizur Rahman, <span>Sifat Ajmeer Haque</span>, Andrea Trianni</div>
+        <div class="pub-venue">The TQM Journal — Emerald Publishing · Vol. 37, Issue 2, pp. 319–344</div>
+        <div class="pub-links">
+          <a class="pub-btn doi" href="https://doi.org/10.1108/TQM-08-2023-0247" target="_blank" rel="noopener">↗ DOI</a>
+          <a class="pub-btn pdf" href="https://doi.org/10.1108/TQM-08-2023-0247" target="_blank" rel="noopener">⬇ PDF</a>
+          <button class="pub-btn cite-btn" onclick="toggleCite(this)">❝ Cite</button>
+          <span class="pub-cite">📊 4 Citations</span>
+        </div>
+        <div class="pub-cite-block">Rahman, M., Haque, S. A., &amp; Trianni, A. (2024). Barriers to TQM implementation in SMEs in Bangladesh: An interpretive structural modeling approach. <em>The TQM Journal</em>, 37(2), 319–344. https://doi.org/10.1108/TQM-08-2023-0247</div>
+      </div>
+      <span class="pub-badge pb-j">Journal</span>
+    </article>
+    <article class="pub-card">
+      <div class="pub-num" aria-hidden="true">02</div>
+      <div>
+        <div class="pub-year">2024</div>
+        <h3 class="pub-title">Identification and Prioritization of Barriers to Industry 4.0 Adoption in the Context of Food and Beverage Industries of Bangladesh</h3>
+        <div class="pub-authors">Mustafizur Rahman, Md. Enjamamul Haque Emon, Mehedi Hasan Antor, <span>Sifat Ajmeer Haque</span>, Subrata Talapatra</div>
+        <div class="pub-venue">Benchmarking: An International Journal — Emerald Publishing · Vol. 32, Issue 2, pp. 757–783</div>
+        <div class="pub-links">
+          <a class="pub-btn doi" href="https://doi.org/10.1108/BIJ-06-2023-0371" target="_blank" rel="noopener">↗ DOI</a>
+          <a class="pub-btn pdf" href="https://doi.org/10.1108/BIJ-06-2023-0371" target="_blank" rel="noopener">⬇ PDF</a>
+          <button class="pub-btn cite-btn" onclick="toggleCite(this)">❝ Cite</button>
+          <span class="pub-cite">📊 23 Citations</span>
+        </div>
+        <div class="pub-cite-block">Rahman, M., Emon, M. E. H., Antor, M. H., Haque, S. A., &amp; Talapatra, S. (2024). Identification and prioritization of barriers to Industry 4.0 adoption in the context of food and beverage industries of Bangladesh. <em>Benchmarking: An International Journal</em>, 32(2), 757–783. https://doi.org/10.1108/BIJ-06-2023-0371</div>
+      </div>
+      <span class="pub-badge pb-j">Journal</span>
+    </article>
+  </div>
+
+  <!-- CONFERENCES -->
+  <div class="pub-section" id="tab-conferences">
+    <article class="pub-card">
+      <div class="pub-num" aria-hidden="true">01</div>
+      <div>
+        <div class="pub-year">2024</div>
+        <h3 class="pub-title">Industry 4.0-Enabled SMED Implementation for Improving Pipe Extrusion Efficiency: A Case Study</h3>
+        <div class="pub-authors"><span>Sifat Ajmeer Haque</span> (Associated with Akij Pipes &amp; Fittings)</div>
+        <div class="pub-venue">7th IEOM Bangladeshi International Conference on IE &amp; Operations Management</div>
+        <div class="pub-links">
+        <a class="pub-btn doi" href="https://doi.org/10.46254/BA07.20240193" target="_blank" rel="noopener">↗ DOI</a>
+          <a class="pub-btn pdf" href="https://doi.org/10.46254/BA07.20240193" target="_blank" rel="noopener">⬇ PDF</a>
+          <span class="pub-btn" style="cursor:default;opacity:.6;">AIUB, Dhaka · Dec 21–23, 2024 · Paper ID: 193</span>
+          <button class="pub-btn cite-btn" onclick="toggleCite(this)">❝ Cite</button>
+<span class="pub-cite">📊 2 Citations</span>
+        </div>
+        <div class="pub-cite-block">Haque, S. A. (2024). Industry 4.0-enabled SMED implementation for improving pipe extrusion efficiency: A case study. <em>Proceedings of the 7th Bangladeshi IEOM International Conference</em>, Paper ID 193. AIUB, Dhaka, Dec 21–23, 2024.</div>
+      </div>
+      <span class="pub-badge pb-c">Presented</span>
+    </article>
+    <article class="pub-card">
+      <div class="pub-num" aria-hidden="true">02</div>
+      <div>
+        <div class="pub-year">2023</div>
+        <h3 class="pub-title">Hierarchical Framework for Assessing the Drivers and Barriers to Implementing Green Supply Chain Management in the Construction Sector of Bangladesh</h3>
+        <div class="pub-authors">Mustafizur Rahman, Md. Mahafuj Anam Murad, <span>Sifat Ajmeer Haque</span>, Sarojit Kumar Biswas, Rakesh Roy</div>
+        <div class="pub-venue">7th International Conference on Mechanical Engineering and Renewable Energy (ICMERE-2023)</div>
+        <div class="pub-links">
+          <a class="pub-btn doi" href="https://tinyurl.com/28ebnt33" target="_blank" rel="noopener">↗ DOI / ResearchGate</a>
+          <a class="pub-btn pdf" href="https://tinyurl.com/28ebnt33" target="_blank" rel="noopener">⬇ PDF</a>
+          <button class="pub-btn cite-btn" onclick="toggleCite(this)">❝ Cite</button>
+          <span class="pub-cite">📊 1 Citation</span>
+        </div>
+        <div class="pub-cite-block">Rahman, M., Murad, M. M. A., Haque, S. A., Biswas, S. K., &amp; Roy, R. (2023). Hierarchical framework for assessing the drivers and barriers to implementing green supply chain management in the construction sector of Bangladesh. <em>Proceedings of the 7th ICMERE</em>. CUET, Chittagong, Nov 16–18, 2023.</div>
+      </div>
+      <span class="pub-badge pb-c">Conference</span>
+    </article>
+    <article class="pub-card">
+      <div class="pub-num" aria-hidden="true">03</div>
+      <div>
+        <div class="pub-year">2025</div>
+        <h3 class="pub-title">Improving Supply Chain Effectiveness: An Analysis of Bangladesh's Pharmaceutical Industry</h3>
+        <div class="pub-authors"><span>Sifat Ajmeer Haque</span> (Associated with JUST)</div>
+        <div class="pub-venue">Supply Chain &amp; Logistics Competition — 8th IEOM Bangladesh Conference, Dhaka, Dec 2025</div>
+        <div class="pub-links">
+          <button class="pub-btn cite-btn" onclick="toggleCite(this)">❝ Cite</button>
+        </div>
+        <div class="pub-cite-block">Haque, S. A. (2025). Improving supply chain effectiveness: An analysis of Bangladesh's pharmaceutical industry. <em>8th IEOM Bangladesh Conference — Supply Chain &amp; Logistics Competition</em>. Dhaka, Dec 2025. [2nd Place Award]</div>
+      </div>
+      <span class="pub-badge pb-a">🏆 2nd Place</span>
+    </article>
+  </div>
+
+  <!-- REPORTS -->
+  <div class="pub-section" id="tab-reports">
+    <div class="report-grid reveal">
+      <div class="report-card">
+        <div class="report-n">R1</div>
+        <div class="report-type">Applied Industrial Report</div>
+        <div class="report-title">Lean Tools Implementation at APFL — Process Optimisation Report</div>
+        <div class="report-desc">Documented SMED-based lean implementation at Akij Plastics Limited. Achieved 60% die changeover reduction, 40% productivity gain, and USD 4,320 annual cost savings.</div>
+      </div>
+      <div class="report-card">
+        <div class="report-n">A1</div>
+        <div class="report-type">Technical Article / Preprint</div>
+        <div class="report-title">From Manual Manufacturing to Smart Manufacturing: The Next Step for Solvent Cement Plants</div>
+        <div class="report-desc">Explores the digital transformation pathway for process-intensive solvent cement plants, addressing barriers to Industry 4.0 adoption and practical roadmaps.</div>
+      </div>
+      <div class="report-card">
+        <div class="report-n">P1</div>
+        <div class="report-type">LinkedIn Thought Leadership</div>
+        <div class="report-title">Depreciation vs. Salvage Value: What Every Engineer Should Know</div>
+        <div class="report-desc">Industry-facing financial literacy piece connecting engineering asset management principles to real-world manufacturing decision-making.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ EXPERIENCE ═══════════════════════ -->
+<section id="experience">
+<div class="wrap">
+  <div class="s-label reveal">04 — Experience</div>
+  <h2 class="s-h1 reveal">Professional <i>Timeline</i></h2>
+  <p class="s-sub reveal delay-1">Measurable impact in real industrial environments — from factory floor to academic stage.</p>
+
+  <div class="exp-grid">
+    <div class="exp-card reveal">
+      <div class="exp-period">Jul 2023 — Present</div>
+      <div class="exp-role">Assistant Officer<br>Production & Planning</div>
+      <div class="exp-org">Akij Plastics Limited (APFL)</div>
+      <div class="exp-loc">📍 Mymensingh Division, Bangladesh · Full-time</div>
+      <ul class="exp-body">
+        <li>Implemented <strong>SMED</strong> in pipe extrusion — reduced die changeover time by <strong>60%</strong>, increased productivity by <strong>40%</strong>, saving approx. <strong>USD 4,320 annually</strong>. Research presented at IEOM 2024.</li>
+        <li>Led production planning and optimisation for solvent cement, filter pipe, and fabricated fittings units.</li>
+        <li>Achieved <strong>record monthly production</strong> milestones; recognised company-wide for outstanding performance.</li>
+        <li>Oversees scheduling, process optimisation, team coordination, and corporate sales.</li>
+      </ul>
+      <div class="exp-kpis">
+        <span class="kpi-chip">SMED ↓60%</span>
+        <span class="kpi-chip">Productivity ↑40%</span>
+        <span class="kpi-chip">USD 4,320 saved/yr</span>
+        <span class="kpi-chip">Record Production</span>
+      </div>
+    </div>
+    <div class="exp-card reveal delay-1">
+      <div class="exp-period">Jun 2023 — Jul 2023</div>
+      <div class="exp-role">Executive<br>Production & Planning</div>
+      <div class="exp-org">Square Apparels Ltd. — Square Group</div>
+      <div class="exp-loc">📍 Mymensingh Division, Bangladesh · Full-time</div>
+      <ul class="exp-body">
+        <li>Supervised daily finishing operations ensuring production targets were met on schedule.</li>
+        <li>Implemented process improvements and optimised workflow on the production floor.</li>
+        <li>Coordinated cross-functional teams for timely order fulfilment and quality assurance.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ RESEARCH INTERESTS ═══════════════════════ -->
+<section id="research">
+<div class="wrap">
+  <div class="s-label reveal">05 — Research</div>
+  <h2 class="s-h1 reveal">Research <i>Domains</i></h2>
+  <p class="s-sub reveal delay-1">Active areas of investigation — oriented toward doctoral-level inquiry at the intersection of AI and industrial engineering.</p>
+
+  <div class="r-grid reveal delay-2">
+    <div class="r-card">
+      <div class="r-num">01</div>
+      <div class="r-title">AI-Driven Industrial Energy Management</div>
+      <div class="r-desc">Applying ML and intelligent control to reduce energy consumption in manufacturing — focus on emerging economies and resource-constrained settings.</div>
+      <span class="r-chip">PhD Focus</span>
+    </div>
+    <div class="r-card">
+      <div class="r-num">02</div>
+      <div class="r-title">Industry 4.0 Adoption & SMED Implementation</div>
+      <div class="r-desc">Identifying barriers to digital manufacturing and applying smart lean tools in real industrial environments — published and presented internationally.</div>
+      <span class="r-chip">Published + Presented</span>
+    </div>
+    <div class="r-card">
+      <div class="r-num">03</div>
+      <div class="r-title">TQM & Quality Management in SMEs</div>
+      <div class="r-desc">Modelling barriers to Total Quality Management using ISM and MICMAC analysis in Bangladeshi SMEs. Published in The TQM Journal (Emerald).</div>
+      <span class="r-chip">Published</span>
+    </div>
+    <div class="r-card">
+      <div class="r-num">04</div>
+      <div class="r-title">Green Supply Chain Management</div>
+      <div class="r-desc">Hierarchical frameworks for GSCM drivers and barriers in construction and pharmaceutical sectors; circular economy integration strategies.</div>
+      <span class="r-chip">Published + Presented</span>
+    </div>
+    <div class="r-card">
+      <div class="r-num">05</div>
+      <div class="r-title">Supply Chain Resilience & Optimisation</div>
+      <div class="r-desc">Analysing supply chain effectiveness in Bangladesh's pharmaceutical industry — awarded 2nd place at IEOM Bangladesh Conference 2025.</div>
+      <span class="r-chip">Award-Winning</span>
+    </div>
+    <div class="r-card">
+      <div class="r-num">06</div>
+      <div class="r-title">Smart Process Industry Transformation</div>
+      <div class="r-desc">Investigating transition from manual to smart manufacturing in energy-intensive process industries such as solvent cement and pipe extrusion.</div>
+      <span class="r-chip">Ongoing</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ SKILLS ═══════════════════════ -->
+<section id="skills">
+<div class="wrap">
+  <div class="s-label reveal">06 — Skills</div>
+  <h2 class="s-h1 reveal">Technical <i>Toolkit</i></h2>
+  <p class="s-sub reveal delay-1">Engineering methods, software tools, and domain expertise built through research and practice.</p>
+
+  <div class="skills-outer">
+    <div>
+      <div class="sk-group reveal">
+        <div class="sk-label">Engineering Methods</div>
+        <div class="sk-tags">
+          <span class="sk-tag hl">Lean Manufacturing</span>
+          <span class="sk-tag hl">SMED</span>
+          <span class="sk-tag">VSM</span>
+          <span class="sk-tag">Kaizen</span>
+          <span class="sk-tag">5S</span>
+          <span class="sk-tag">OEE Analysis</span>
+          <span class="sk-tag hl">Six Sigma Yellow Belt</span>
+          <span class="sk-tag">DMAIC</span>
+          <span class="sk-tag">Line Balancing</span>
+          <span class="sk-tag">ISM / MICMAC</span>
+        </div>
+      </div>
+      <div class="sk-group reveal delay-1">
+        <div class="sk-label">Software & Tools</div>
+        <div class="sk-tags">
+          <span class="sk-tag hl">Microsoft Excel</span>
+          <span class="sk-tag hl">Power BI</span>
+          <span class="sk-tag hl">Python</span>
+          <span class="sk-tag hl">SPSS</span>
+          <span class="sk-tag">SOLIDWORKS</span>
+          <span class="sk-tag">Microsoft Word</span>
+        </div>
+      </div>
+      <div class="sk-group reveal delay-2">
+        <div class="sk-label">Domain Knowledge</div>
+        <div class="sk-tags">
+          <span class="sk-tag hl">Industry 4.0</span>
+          <span class="sk-tag">Supply Chain Management</span>
+          <span class="sk-tag">Quality Systems (TQM)</span>
+          <span class="sk-tag">Energy Management</span>
+          <span class="sk-tag">Circular Economy</span>
+          <span class="sk-tag">Green Logistics</span>
+          <span class="sk-tag">Operations Research</span>
+          <span class="sk-tag">Garment Technology</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ielts-wrap reveal delay-2">
+      <div class="ielts-header">
+        <div class="ielts-name">IELTS Academic</div>
+        <div class="ielts-sub">English Language Proficiency · British Council</div>
+      </div>
+      <div class="ielts-visual">
+        <div class="ielts-overall">
+          <div class="num">6.5</div>
+          <div class="lbl">Overall</div>
+        </div>
+        <div class="ielts-bars">
+          <div class="ib-row">
+            <span class="ib-name">Listening</span>
+            <div class="ib-bar"><div class="ib-fill" style="--w:0.875" data-width="0.875"></div></div>
+            <span class="ib-score">7.0</span>
+          </div>
+          <div class="ib-row">
+            <span class="ib-name">Reading</span>
+            <div class="ib-bar"><div class="ib-fill" data-width="0.875"></div></div>
+            <span class="ib-score">7.0</span>
+          </div>
+          <div class="ib-row">
+            <span class="ib-name">Writing</span>
+            <div class="ib-bar"><div class="ib-fill" data-width="0.75"></div></div>
+            <span class="ib-score">6.0</span>
+          </div>
+          <div class="ib-row">
+            <span class="ib-name">Speaking</span>
+            <div class="ib-bar"><div class="ib-fill" data-width="0.75"></div></div>
+            <span class="ib-score">6.0</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-family:var(--mono);font-size:.65rem;color:var(--muted);letter-spacing:.08em;">Scored above band 7 in Listening & Reading — demonstrating strong academic English comprehension for doctoral study.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ EDUCATION ═══════════════════════ -->
+<section id="education">
+<div class="wrap">
+  <div class="s-label reveal">07 — Education</div>
+  <h2 class="s-h1 reveal">Academic <i>Journey</i></h2>
+  <p class="s-sub reveal delay-1">From foundational excellence to engineering specialisation — a continuous pursuit of rigour.</p>
+
+  <div class="edu-stack reveal delay-2">
+    <div class="edu-card">
+      <div class="edu-yr">2024</div>
+      <div>
+        <div class="edu-degree">B.Sc. in Industrial and Production Engineering (IPE)</div>
+        <div class="edu-inst">Jashore University of Science and Technology (JUST) — 9th Batch</div>
+        <div class="edu-meta">Graduated 2024</div>
+        <div class="edu-desc">Focused on operations management, manufacturing systems, industrial automation, process optimisation, and Industry 4.0 technologies. Undergraduate thesis published in The TQM Journal (Emerald Publishing). Active member of the IPE Association and multiple campus clubs.</div>
+        <div class="edu-tags">
+          <span class="edu-tag">Leadership</span>
+          <span class="edu-tag">Problem-Solving</span>
+          <span class="edu-tag">Programming</span>
+          <span class="edu-tag">Teamwork</span>
+          <span class="edu-tag">Research</span>
+        </div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-yr">2016</div>
+      <div>
+        <div class="edu-degree">Higher Secondary Certificate (HSC) — Science</div>
+        <div class="edu-inst">New Government Degree College, Rajshahi</div>
+        <div class="edu-meta">Year: 2016 · GPA: 5.00 / 5.00</div>
+        <div class="edu-desc">Achieved perfect GPA with a strong foundation in science, mathematics, and analytical reasoning.</div>
+        <div class="edu-tags"><span class="edu-tag">Perfect GPA</span><span class="edu-tag">Scientific Reasoning</span><span class="edu-tag">Mathematics</span></div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-yr">2014</div>
+      <div>
+        <div class="edu-degree">Secondary School Certificate (SSC) — Science</div>
+        <div class="edu-inst">Maskatadighi High School and College, Rajshahi</div>
+        <div class="edu-meta">Year: 2014 · GPA: 5.00 / 5.00</div>
+        <div class="edu-desc">Perfect GPA with outstanding performance in science and mathematics.</div>
+        <div class="edu-tags"><span class="edu-tag">Perfect GPA</span><span class="edu-tag">Adaptability</span><span class="edu-tag">Algebraic Thinking</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ CERTIFICATIONS ═══════════════════════ -->
+<section id="certifications">
+<div class="wrap">
+  <div class="s-label reveal">08 — Credentials</div>
+  <h2 class="s-h1 reveal">Professional <i>Certifications</i></h2>
+  <p class="s-sub reveal delay-1">Formal recognition across international academic and professional bodies.</p>
+
+  <div class="cert-grid reveal delay-2">
+    <div class="cert-card featured-c">
+      <div class="cert-icon">🛡️</div>
+      <div>
+        <div class="cert-name">Certificate of Reviewer — 7th Asia Pacific IEOM Conference</div>
+        <div class="cert-issuer">IEOM Society International · Bangkok, Thailand · March 25–27, 2026</div>
+        <div class="cert-desc">Reviewed three technical papers at an international conference. Certified by Prof. Charles Mbohwa (UNISA) and Prof. Donald M. Reimer (IEOM COO).</div>
+      </div>
+    </div>
+    <div class="cert-card featured-c">
+      <div class="cert-icon">🏆</div>
+      <div>
+        <div class="cert-name">2nd Place — IEOM Supply Chain & Logistics Competition</div>
+        <div class="cert-issuer">IEOM Society International · 8th IEOM Bangladesh Conference · Dec 2025</div>
+        <div class="cert-desc">Demonstrated advanced problem-solving in logistics optimisation and supply chain strategy, competing against teams from multiple technical universities. Associated with JUST.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎤</div>
+      <div>
+        <div class="cert-name">Certificate of Presentation — 7th IEOM Bangladesh Conference</div>
+        <div class="cert-issuer">IEOM Society International · AIUB, Dhaka · Dec 2024</div>
+        <div class="cert-desc">Oral presentation of "Industry 4.0-Enabled SMED Implementation for Improving Pipe Extrusion Efficiency: A Case Study" (Paper ID: 193). Associated with Akij Pipes & Fittings.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎤</div>
+      <div>
+        <div class="cert-name">Certificate of Presentation — 7th ICMERE International Conference</div>
+        <div class="cert-issuer">CUET, Chittagong · Nov 2023</div>
+        <div class="cert-desc">Presented "A Hierarchical Framework for Assessing Drivers and Barriers to GSCM in the Construction Sector of Bangladesh." Associated with JUST.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">⚡</div>
+      <div>
+        <div class="cert-name">Six Sigma Yellow Belt Professional</div>
+        <div class="cert-issuer">6sigmastudyguide.com · Aug 25, 2023</div>
+        <div class="cert-desc">Certified in DMAIC methodology, process improvement, and statistical quality control fundamentals.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Industrial Attachment Training Programme</div>
+        <div class="cert-issuer">BITAC — Bangladesh Industrial Technical Assistance Centre (Ministry of Education)</div>
+        <div class="cert-desc">Hands-on industrial training across manufacturing processes, machinery, and production systems.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🧵</div>
+      <div>
+        <div class="cert-name">Industrial Training — Garments Technology & Lean Manufacturing</div>
+        <div class="cert-issuer">BKMEA — Institute of Apparel Research & Technology (iART)</div>
+        <div class="cert-desc">Specialised training in garment production technology and lean manufacturing principles.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🛡️</div>
+      <div>
+        <div class="cert-name">Certificate of Reviewer — 8th IEOM Bangladesh Conference</div>
+        <div class="cert-issuer">IEOM Society International · Dhaka · Dec 20–21, 2025</div>
+        <div class="cert-desc">Appointed as technical peer reviewer for industrial engineering and operations management proceedings.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ ACHIEVEMENTS ═══════════════════════ -->
+<section id="achievements">
+<div class="wrap">
+  <div class="s-label reveal">09 — Achievements</div>
+  <h2 class="s-h1 reveal">Recognition &amp; <i>Milestones</i></h2>
+  <p class="s-sub reveal delay-1">A record of consistent achievement across research, industry, and academia.</p>
+
+  <div class="ach-list reveal delay-2">
+    <div class="ach-row">
+      <div class="ach-icon">🏆</div>
+      <div>
+        <div class="ach-title">2nd Place — IEOM Supply Chain & Logistics Competition</div>
+        <div class="ach-desc">Awarded for pharmaceutical supply chain research at the 8th IEOM Bangladesh Conference, Dhaka, Dec 2025.</div>
+      </div>
+      <div class="ach-year">2025</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-icon">🌏</div>
+      <div>
+        <div class="ach-title">International Reviewer — 7th Asia Pacific IEOM Conference, Bangkok</div>
+        <div class="ach-desc">Reviewed three research papers as an invited expert reviewer at an international conference in Thailand, March 2026.</div>
+      </div>
+      <div class="ach-year">2026</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-icon">🎤</div>
+      <div>
+        <div class="ach-title">2× International Conference Presenter (IEOM & ICMERE)</div>
+        <div class="ach-desc">Delivered oral presentations of original research at two international conferences: AIUB Dhaka (2024) and CUET Chittagong (2023).</div>
+      </div>
+      <div class="ach-year">2023–24</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-icon">📚</div>
+      <div>
+        <div class="ach-title">22+ Citations — Benchmarking Journal (Emerald Publishing)</div>
+        <div class="ach-desc">Co-authored paper on Industry 4.0 barriers in the Food & Beverage sector has accumulated 20+ scholarly citations.</div>
+      </div>
+      <div class="ach-year">2024</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-icon">⚙️</div>
+      <div>
+        <div class="ach-title">60% Die Changeover Reduction — Akij Plastics Limited</div>
+        <div class="ach-desc">SMED implementation resulted in 40% productivity gain and USD 4,320 in verified annual cost savings — presented as case study at IEOM 2024.</div>
+      </div>
+      <div class="ach-year">2024</div>
+    </div>
+    <div class="ach-row">
+      <div class="ach-icon">🎓</div>
+      <div>
+        <div class="ach-title">Perfect GPA — Both HSC & SSC (5.00 / 5.00)</div>
+        <div class="ach-desc">Achieved full GPA in both secondary and higher secondary examinations, establishing a foundation of academic excellence.</div>
+      </div>
+      <div class="ach-year">2014–16</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ EXTRAS ═══════════════════════ -->
+<section id="extra">
+<div class="wrap">
+  <div class="s-label reveal">10 — Activities</div>
+  <h2 class="s-h1 reveal">Extracurricular <i>Engagement</i></h2>
+
+  <div class="extra-cols reveal delay-1">
+    <div>
+      <div class="extra-group-t">Academic & Professional</div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Reviewer — 7th Asia Pacific IEOM Conference, Bangkok, Thailand</div><div class="extra-yr">2026</div></div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Reviewer + 2nd Place, Supply Chain Competition — 8th IEOM Bangladesh Conference</div><div class="extra-yr">2025</div></div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Conference Presenter — 7th IEOM Bangladesh Conference, AIUB Dhaka</div><div class="extra-yr">2024</div></div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Conference Presenter — 7th ICMERE, CUET Chittagong</div><div class="extra-yr">2023</div></div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Member — Association of IPE, JUST</div><div class="extra-yr">2018–Now</div></div>
+    </div>
+    <div>
+      <div class="extra-group-t">Campus & Community</div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Organizer — APFL Football Tournament at Akij Economic Zone</div><div class="extra-yr">2024</div></div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Anchor & Event Organizer — JUST</div><div class="extra-yr">2018–22</div></div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Member — Robotic Club & Bangabandhu Career Club, JUST</div><div class="extra-yr">2019–21</div></div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Sports Representative — Volleyball, Cricket, Football (JUST)</div><div class="extra-yr">2018–22</div></div>
+      <div class="extra-item"><div class="extra-bullet"></div><div class="extra-text">Volunteer — Nobo Utthan Bangladesh</div><div class="extra-yr">2020–22</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+<section id="contact">
+<div class="wrap-sm">
+  <div class="contact-inner">
+    <div class="s-label reveal" style="justify-content:center;">11 — Contact</div>
+    <h2 class="contact-headline reveal delay-1">Let's build<br><em>something meaningful</em></h2>
+    <p class="contact-sub reveal delay-2">Open to PhD opportunities, research collaborations, consulting engagements, and conversations about the future of industrial engineering, smart manufacturing, and AI-driven energy management.</p>
+    <div class="contact-email-wrap reveal delay-3">
+      <a href="/cdn-cgi/l/email-protection#4d3e242b2c392c272028283f0d2a202c2421632e2220" class="contact-email"><span class="__cf_email__" data-cfemail="81f2e8e7e0f5e0ebece4e4f3c1e6ece0e8edafe2eeec">[email&#160;protected]</span></a>
+    </div>
+    <div class="social-row reveal delay-3">
+      <a href="https://www.linkedin.com/in/sifat-ajmeer-haque/" target="_blank" class="soc-btn">LinkedIn</a>
+      <a href="https://youtube.com" target="_blank" class="soc-btn">YouTube</a>
+      <a href="https://facebook.com/sifat.ajmeer.haque" target="_blank" class="soc-btn">Facebook</a>
+      <a href="https://sifatajmeerhaque.online" target="_blank" class="soc-btn">Website ↗</a>
+    </div>
+    <p class="contact-loc reveal delay-4">📍 <span>Rajshahi-6212, Bangladesh</span></p>
+  </div>
+</div>
+</section>
+
+<footer role="contentinfo">
+  <span class="f-left">© 2026 Sifat Ajmeer Haque · All rights reserved.</span>
+  <span class="f-right" onclick="window.scrollTo({top:0,behavior:'smooth'})" role="button" aria-label="Back to top">↑ Back to top</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ═══ NAV SCROLL ═══ */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+  // Progress bar
+  const doc = document.documentElement;
+  const pct = (window.scrollY / (doc.scrollHeight - doc.clientHeight)) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+/* ═══ BURGER ═══ */
+const mob = document.getElementById('mobOverlay');
+document.getElementById('burgerBtn').addEventListener('click', () => mob.classList.add('open'));
+document.getElementById('mobClose').addEventListener('click', () => mob.classList.remove('open'));
+function closeMob() { mob.classList.remove('open'); }
+
+/* ═══ SCROLL REVEAL ═══ */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => revealObs.observe(el));
+
+/* ═══ IELTS BAR ANIMATION ═══ */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.ib-fill').forEach(bar => {
+        const w = bar.dataset.width;
+        bar.style.width = (parseFloat(w) * 100) + '%';
+        bar.classList.add('animated');
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const ieltsWrap = document.querySelector('.ielts-wrap');
+if (ieltsWrap) barObs.observe(ieltsWrap);
+
+/* ═══ PUB TABS ═══ */
+document.querySelectorAll('.pub-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.pub-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pub-section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    const target = document.getElementById('tab-' + tab.dataset.tab);
+    if (target) target.classList.add('active');
+  });
+});
+
+/* ═══ HERO ROLE CHIPS — cycle highlight ═══ */
+const chips = document.querySelectorAll('.role-chip');
+let ci = 0;
+setInterval(() => {
+  chips.forEach(c => c.classList.remove('ac'));
+  chips[ci % chips.length].classList.add('ac');
+  ci++;
+}, 1600);
+
+/* ═══ SUBTLE CURSOR TRAIL (desktop only) — elastic rAF version ═══ */
+if (window.innerWidth > 960) {
+  const cursor = document.createElement('div');
+  cursor.style.cssText = `
+    position:fixed;width:8px;height:8px;border-radius:50%;
+    background:var(--gold);pointer-events:none;z-index:9999;
+    transform:translate(-50%,-50%);opacity:0;
+    will-change:transform,opacity;
+  `;
+  const ring = document.createElement('div');
+  ring.style.cssText = `
+    position:fixed;width:28px;height:28px;border-radius:50%;
+    border:1.5px solid rgba(184,134,11,.45);pointer-events:none;z-index:9998;
+    transform:translate(-50%,-50%);opacity:0;
+    will-change:transform,opacity;
+  `;
+  document.body.appendChild(cursor);
+  document.body.appendChild(ring);
+
+  let mx=0,my=0,cx=0,cy=0,rx=0,ry=0,visible=false;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    if (!visible) {
+      cursor.style.opacity = '0.85';
+      ring.style.opacity = '0.6';
+      visible = true;
+    }
+  });
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    ring.style.opacity = '0';
+    visible = false;
+  });
+
+  function animateCursor() {
+    // Dot: snappy follow
+    cx += (mx - cx) * 0.28;
+    cy += (my - cy) * 0.28;
+    cursor.style.left = cx + 'px';
+    cursor.style.top  = cy + 'px';
+    // Ring: elastic lag
+    rx += (mx - rx) * 0.10;
+    ry += (my - ry) * 0.10;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  requestAnimationFrame(animateCursor);}
+
+/* ═══ PUBLICATION CITE TOGGLE ═══ */
+function toggleCite(btn) {
+  const block = btn.closest('.pub-links').nextElementSibling;
+  if (!block) return;
+  const isOpen = block.classList.contains('open');
+  // Close all other open cite blocks
+  document.querySelectorAll('.pub-cite-block.open').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.pub-btn.cite-btn').forEach(b => { b.textContent = '❝ Cite'; });
+  if (!isOpen) {
+    block.classList.add('open');
+    btn.textContent = '✕ Close';
+  }
+}
+</script>
+</body>
+</html>
